@@ -31,10 +31,17 @@ the deploy has not landed here.
 
 Needs Node 18 or newer. Nothing else — no account, no API key, no telemetry.
 
+```bash
+git clone https://github.com/fahmiwol/deploy-check-mcp
+cd deploy-check-mcp
+npm install
+npm test        # 21 tests, no network needed
+```
+
 **Claude Code**
 
 ```bash
-claude mcp add deploy-check -- npx -y deploy-check-mcp
+claude mcp add deploy-check -- node /full/path/to/deploy-check-mcp/src/server.js
 ```
 
 **Claude Desktop, Cursor, Windsurf, Codex** — add this to your MCP config:
@@ -43,23 +50,15 @@ claude mcp add deploy-check -- npx -y deploy-check-mcp
 {
   "mcpServers": {
     "deploy-check": {
-      "command": "npx",
-      "args": ["-y", "deploy-check-mcp"]
+      "command": "node",
+      "args": ["/full/path/to/deploy-check-mcp/src/server.js"]
     }
   }
 }
 ```
 
-Or clone it and point at the file directly:
-
-```bash
-git clone https://github.com/fahmiwol/deploy-check-mcp
-cd deploy-check-mcp && npm install && npm test
-```
-
-```json
-{ "mcpServers": { "deploy-check": { "command": "node", "args": ["/path/to/deploy-check-mcp/src/server.js"] } } }
-```
+> Not on npm yet, so there is no `npx` one-liner today. When it is published this section
+> will say so; until then the clone above is the install, and it is two commands.
 
 ---
 
