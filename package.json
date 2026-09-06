@@ -1,0 +1,47 @@
+{
+  "name": "deploy-check-mcp",
+  "version": "1.0.0",
+  "description": "An MCP server that answers \"did my deploy actually work?\" — catches pages that return 200 and render nothing, broken links, stray noindex, and staging that never updated.",
+  "license": "MIT",
+  "author": "Fahmi Ghani",
+  "type": "commonjs",
+  "main": "src/checks.js",
+  "bin": {
+    "deploy-check-mcp": "src/server.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "claude",
+    "deploy",
+    "smoke-test",
+    "uptime",
+    "broken-links",
+    "seo",
+    "devops"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fahmiwol/deploy-check-mcp.git"
+  },
+  "homepage": "https://github.com/fahmiwol/deploy-check-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/fahmiwol/deploy-check-mcp/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^4.0.0"
+  }
+}
