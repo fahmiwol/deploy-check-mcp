@@ -153,7 +153,7 @@ MIT. Use it, fork it, ship it inside whatever you like.
 Built while shipping things and getting caught by exactly these bugs.
 
 - **[Agent Memory Starter](https://github.com/fahmiwol/agent-memory-starter)** — free, open source. Stop re-explaining your project to every new AI session.
-- **[MCP Server Starter](https://fahmiwolf.gumroad.com/l/qfhvpk)** — $7. A zero-dependency MCP runtime and `mcp-probe`, which tests any MCP server, including this one.
+- **[MCP Server Starter](https://fahmiwolf.gumroad.com/l/qfhvpk)** — $5. A zero-dependency MCP runtime and `mcp-probe`, which tests any MCP server, including this one.
 - **[Second Brain Kit](https://fahmiwolf.gumroad.com/l/ezqudk)** — $7. One memory for every AI agent you use, served over MCP.
 
 All of them: [fahmiwolf.gumroad.com](https://fahmiwolf.gumroad.com)
