@@ -1,5 +1,9 @@
 # Deploy Check MCP
 
+[![test](https://github.com/fahmiwol/deploy-check-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/fahmiwol/deploy-check-mcp/actions/workflows/test.yml)
+[![node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
+[![licence](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
+
 **`200 OK` is not the same as "it works".**
 
 A page can return 200, weigh 41 KB, and show a human absolutely nothing. That is what a
