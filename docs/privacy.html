@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy — Deploy Check MCP</title>
+<meta name="description" content="Deploy Check MCP collects no data. It runs on your machine, contacts only the URLs you ask it to check, and sends nothing to the author.">
+<style>
+  :root { color-scheme: light dark; --ink:#12181f; --dim:#57636f; --bg:#fbfcfd; --line:#dde3e9; --accent:#0b6bcb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#e8eef5; --dim:#94a3b1; --bg:#0d1319; --line:#26313c; --accent:#6cb6ff; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; line-height:1.2; margin:0 0 .35rem; }
+  h2 { font-size: 1.15rem; margin: 2.2rem 0 .5rem; }
+  .meta { color: var(--dim); margin: 0 0 2rem; font-size: .95rem; }
+  p, li { color: var(--ink); }
+  .lead { font-size: 1.05rem; }
+  a { color: var(--accent); }
+  code { background: color-mix(in srgb, var(--ink) 8%, transparent); padding: .12em .38em; border-radius: 4px; font-size: .9em; word-break: break-all; }
+  hr { border:0; border-top:1px solid var(--line); margin:2.5rem 0; }
+  .note { border-left: 3px solid var(--accent); padding: .1rem 0 .1rem 1rem; color: var(--dim); }
+  footer { color: var(--dim); font-size:.9rem; margin-top:3rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Deploy Check MCP · Last updated 6 September 2026</p>
+
+  <p class="lead">This extension runs entirely on your own machine. It sends nothing to the
+  author, and there is no server of ours for it to send anything to. It has no account, no API
+  key, no analytics and no telemetry.</p>
+
+  <h2>What data is collected</h2>
+  <p><strong>None.</strong> No personal data, no usage data, no crash reports, no identifiers.</p>
+  <p>The extension makes HTTP requests to exactly one category of address: <strong>the URLs you
+  ask it to check</strong>, in the moment you ask. It does not crawl beyond the page you name,
+  except when you call <code>check_links</code>, which requests the links found on that page in
+  order to see whether they resolve.</p>
+  <p>Every request identifies itself honestly with the user agent
+  <code>deploy-check-mcp (+https://github.com/fahmiwol/deploy-check-mcp)</code>.</p>
+
+  <h2>How data is used and stored</h2>
+  <p>Results are returned to the AI client that asked for them and are not written to disk by
+  this extension. It creates no files, no cache and no logs. Nothing persists after the call
+  returns.</p>
+  <p>What the AI client you are using does with that answer afterwards is governed by that
+  client's own privacy policy, not this one.</p>
+
+  <h2>Third-party sharing</h2>
+  <p><strong>None.</strong> The author receives nothing. No third-party service is contacted,
+  other than the websites whose URLs you supply.</p>
+  <p class="note">The obvious consequence, stated plainly: if you ask it to check a URL, the
+  operator of that website sees a request from your machine, exactly as they would for a browser
+  visit. If a URL carries a private token in its query string, that token is sent to that site.
+  Do not point it at URLs holding secrets you would not paste into a browser address bar.</p>
+
+  <h2>Data retention</h2>
+  <p>Nothing is retained, because nothing is collected or stored.</p>
+
+  <h2>Children</h2>
+  <p>The extension is a developer tool and is not directed at children.</p>
+
+  <h2>Changes</h2>
+  <p>Any change to this policy is committed to the public repository, so its full history is
+  visible at
+  <a href="https://github.com/fahmiwol/deploy-check-mcp/commits/main/PRIVACY.md">the commit log</a>.</p>
+
+  <h2>Contact</h2>
+  <p>Fahmi Ghani — <a href="mailto:fahmiwol@gmail.com">fahmiwol@gmail.com</a><br>
+  Issues: <a href="https://github.com/fahmiwol/deploy-check-mcp/issues">github.com/fahmiwol/deploy-check-mcp/issues</a></p>
+
+  <hr>
+  <footer>
+    <a href="./">Deploy Check MCP</a> ·
+    <a href="https://github.com/fahmiwol/deploy-check-mcp">Source on GitHub</a> ·
+    MIT licensed
+  </footer>
+</main>
+</body>
+</html>

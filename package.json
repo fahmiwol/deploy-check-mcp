@@ -1,6 +1,7 @@
 {
   "name": "deploy-check-mcp",
   "version": "1.0.0",
+  "mcpName": "io.github.fahmiwol/deploy-check",
   "description": "An MCP server that answers \"did my deploy actually work?\" — catches pages that return 200 and render nothing, broken links, stray noindex, and staging that never updated.",
   "license": "MIT",
   "author": "Fahmi Ghani",

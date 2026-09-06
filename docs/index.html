@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deploy Check MCP — did my deploy actually work?</title>
+<meta name="description" content="An MCP server that catches pages returning 200 while rendering nothing, plus broken links, stray noindex, and staging that never updated. Read-only, no API key.">
+<meta property="og:title" content="Deploy Check MCP">
+<meta property="og:description" content="200 OK is not the same as “it works”. Three read-only tools that tell your agent whether a deploy actually landed.">
+<style>
+  :root { color-scheme: light dark; --ink:#12181f; --dim:#57636f; --bg:#fbfcfd; --card:#fff; --line:#dde3e9; --accent:#0b6bcb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#e8eef5; --dim:#94a3b1; --bg:#0d1319; --card:#131b23; --line:#26313c; --accent:#6cb6ff; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  main { max-width:46rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
+  h1 { font-size:2.1rem; line-height:1.15; margin:0 0 .6rem; letter-spacing:-.01em; }
+  h2 { font-size:1.2rem; margin:2.5rem 0 .6rem; }
+  .lead { font-size:1.1rem; color:var(--dim); margin:0 0 2rem; }
+  pre { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:1rem; overflow-x:auto; font-size:.9rem; line-height:1.5; }
+  code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+  p code, li code { background:color-mix(in srgb, var(--ink) 8%, transparent); padding:.12em .38em; border-radius:4px; font-size:.9em; }
+  a { color:var(--accent); }
+  ul { padding-left:1.15rem; }
+  li { margin:.35rem 0; }
+  .tool { border:1px solid var(--line); background:var(--card); border-radius:8px; padding:1rem 1.1rem; margin:.7rem 0; }
+  .tool h3 { margin:0 0 .3rem; font-size:1rem; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+  .tool p { margin:0; color:var(--dim); font-size:.95rem; }
+  hr { border:0; border-top:1px solid var(--line); margin:2.5rem 0; }
+  footer { color:var(--dim); font-size:.9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Deploy Check MCP</h1>
+  <p class="lead"><strong>200 OK is not the same as “it works”.</strong> A page can return 200,
+  weigh 41 KB, and show a human absolutely nothing — that is what a JavaScript bundle that threw
+  looks like from the outside, and what a deploy that published the wrong directory looks like too.</p>
+
+  <p>Three read-only tools that let your AI agent answer the question you actually have after a
+  deploy: did it work, and does the page show anything?</p>
+
+<pre><code>&gt; check the homepage after my deploy
+
+Up (200, 7166 ms) and rendering 5668 characters of visible text; 1 thing worth a look.
+WARN  Took 7166 ms to respond.
+note  No og:image. Links to this page will share without a preview image.</code></pre>
+
+  <h2>The tools</h2>
+  <div class="tool"><h3>check_page</h3><p>Status, redirect chain, response time, and — the part
+  nobody checks — how much visible text the page actually renders. Plus title, meta description,
+  viewport, canonical, og:image, and a stray noindex left over from staging.</p></div>
+  <div class="tool"><h3>check_links</h3><p>Every link on a page, checked. HEAD first, GET as a
+  fallback, so servers that refuse HEAD are never reported as dead links.</p></div>
+  <div class="tool"><h3>compare_pages</h3><p>Two URLs, same signals. Staging against production,
+  or the same URL before and after a release. If both render identical text, the deploy has not
+  landed.</p></div>
+
+  <h2>Install</h2>
+  <p>Node 18 or newer. No account, no API key, no telemetry.</p>
+<pre><code>git clone https://github.com/fahmiwol/deploy-check-mcp
+cd deploy-check-mcp &amp;&amp; npm install &amp;&amp; npm test
+
+claude mcp add deploy-check -- node /full/path/to/deploy-check-mcp/src/server.js</code></pre>
+
+  <h2>What it will not do</h2>
+  <p><strong>It does not run JavaScript.</strong> It reads what the server sends — the page as a
+  crawler, a link preview and a first paint see it. The honest consequence: a healthy
+  single-page app looks identical to a broken one in raw HTML. So blank HTML is only a hard
+  failure when the page loads no scripts at all, because then nothing can ever fill it. With
+  scripts present you get a warning that says plainly that this tool cannot tell the two apart.</p>
+  <p>A tool that called every React app broken would be worth ignoring within a day.</p>
+
+  <hr>
+  <footer>
+    <a href="https://github.com/fahmiwol/deploy-check-mcp">Source on GitHub</a> ·
+    <a href="./privacy.html">Privacy policy</a> ·
+    MIT licensed ·
+    by <a href="https://fahmiwolf.gumroad.com">Fahmi Ghani</a>
+  </footer>
+</main>
+</body>
+</html>

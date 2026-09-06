@@ -125,6 +125,19 @@ still broken from the user's side.
 
 ---
 
+## Privacy Policy
+
+It collects nothing. There is no account, no API key, no analytics and no telemetry, and no
+server of ours for anything to be sent to. It makes HTTP requests to exactly the URLs you ask
+it to check, identifies itself honestly in the user agent, writes no files, keeps no cache and
+retains nothing after a call returns.
+
+One consequence worth stating plainly: the site you point it at sees a request from your
+machine, exactly as it would for a browser visit, so do not hand it URLs carrying secrets in
+the query string.
+
+Full policy: [PRIVACY.md](PRIVACY.md) · <https://fahmiwol.github.io/deploy-check-mcp/privacy.html>
+
 ## Licence
 
 MIT. Use it, fork it, ship it inside whatever you like.

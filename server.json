@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.fahmiwol/deploy-check",
+  "description": "Answers \"did my deploy actually work?\" — catches pages that return 200 and render nothing, broken links, stray noindex, and staging that never updated. Read-only, no API key.",
+  "repository": {
+    "url": "https://github.com/fahmiwol/deploy-check-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "deploy-check-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
