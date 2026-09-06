@@ -1,0 +1,60 @@
+{
+  "manifest_version": "0.3",
+  "name": "deploy-check",
+  "display_name": "Deploy Check",
+  "version": "1.0.0",
+  "description": "Answers \"did my deploy actually work?\" — catches pages that return 200 while rendering nothing, broken links, stray noindex, and staging that never updated.",
+  "long_description": "200 OK is not the same as \"it works\". A page can return 200, weigh 41 KB, and show a human absolutely nothing — that is what a JavaScript bundle that threw looks like from the outside, and what a deploy that published the wrong directory looks like too.\n\nThis extension gives Claude three read-only tools:\n\n- **check_page** — status, redirect chain, response time, and the signal nobody checks: how much visible text the page actually renders. Plus title, meta description, viewport, canonical, og:image, and a stray noindex left over from staging.\n- **check_links** — every link on a page, checked. HEAD first with a GET fallback, so servers that refuse HEAD are never mistaken for dead links. Capped and concurrency-limited so it stays polite.\n- **compare_pages** — two URLs, same signals. Staging against production, or the same URL before and after a release. If both render identical text, the deploy has not landed.\n\nIt does not run JavaScript, on purpose: it reads the page the way a crawler, a link preview and a first paint see it. The honest consequence is that a healthy single-page app looks identical to a broken one in raw HTML, so blank HTML is only reported as a hard failure when the page loads no scripts at all. With scripts present you get a warning that says plainly that this tool cannot tell the two apart.\n\nNo account, no API key, no telemetry. Everything runs on your machine.",
+  "author": {
+    "name": "Fahmi Ghani",
+    "email": "fahmiwol@gmail.com",
+    "url": "https://github.com/fahmiwol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fahmiwol/deploy-check-mcp.git"
+  },
+  "homepage": "https://fahmiwol.github.io/deploy-check-mcp/",
+  "documentation": "https://github.com/fahmiwol/deploy-check-mcp#readme",
+  "support": "https://github.com/fahmiwol/deploy-check-mcp/issues",
+  "license": "MIT",
+  "privacy_policies": [
+    "https://fahmiwol.github.io/deploy-check-mcp/privacy.html"
+  ],
+  "keywords": [
+    "deploy",
+    "smoke-test",
+    "broken-links",
+    "seo",
+    "devops",
+    "uptime"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "src/server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/src/server.js"]
+    }
+  },
+  "tools": [
+    {
+      "name": "check_page",
+      "description": "Check a URL is up and actually rendering: status, redirects, response time, visible text length, and the head tags that decide how it looks in a tab, a search result and a shared link."
+    },
+    {
+      "name": "check_links",
+      "description": "Read every link on a page and check each one resolves, without mistaking a server that refuses HEAD for a dead link."
+    },
+    {
+      "name": "compare_pages",
+      "description": "Compare two URLs and report where they differ, to answer whether a deploy actually landed."
+    }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

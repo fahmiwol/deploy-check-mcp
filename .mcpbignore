@@ -1,0 +1,11 @@
+.git/
+.github/
+docs/
+test/
+*.tgz
+*.mcpb
+node_modules/.package-lock.json
+node_modules/**/test/
+node_modules/**/tests/
+node_modules/**/*.md
+node_modules/**/*.map
